@@ -15,13 +15,10 @@ with open("./Input/Letters/starting_letter.txt") as mail:
     mail_example = mail.readlines()
     mail_in_str = ("".join(str(x) for x in mail_example))
 
-with open("./Output/ReadyToSend/" + "hello22" + ".txt", "a") as new_mail:
-    pass
-
-
-
 # Loop through invited_list and replace the name in the letter
-# for _ in invited_list:
-
-    # with open("./Output/ReadyToSend/" + _ + "_mail.txt", "a") as new_mail:
-    #     mail_in_str.replace("[name]", _)
+for name in invited_list:
+    new_name = name.strip("\n")
+    print(new_name)
+    with open("./Output/ReadyToSend/" + new_name + "_mail.txt", "w") as new_mail:
+        content = mail_in_str.replace("[name]", new_name)
+        new_mail.write(content)
